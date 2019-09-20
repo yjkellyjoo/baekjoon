@@ -6,8 +6,8 @@ typedef std::vector<bool> bool_vec_t;
 typedef std::vector<int> int_vec_t;
 
 void gcd(int a, int b);
-void getPrime(bool_vec_t prime, int a);
-void getMultiples(int_vec_t factor, const bool_vec_t prime, int a);
+void getPrime(bool_vec_t *prime, int a);
+void getMultiples(int_vec_t *factor, bool_vec_t prime, int a);
 void lcm(int a, int b);
 
 
@@ -50,14 +50,14 @@ void gcd(int a, int b) {
 /*
  * prime factorization using Sieve of Eratosthenes
  */
-void getPrime(bool_vec_t prime, int a) {
-    prime[0] = false;
-    prime[1] = false;
+void getPrime(bool_vec_t *prime, int a) {
+    (*prime)[0] = false;
+    (*prime)[1] = false;
 
     for (int p = 2; p != a; ++p) {
-        if (prime[p]) {
+        if ((*prime)[p]) {
             for (int i = p*p; i <= a+1; i+=p) {
-                prime[i] = false;
+                (*prime)[i] = false;
             }
         }
     }
@@ -66,12 +66,12 @@ void getPrime(bool_vec_t prime, int a) {
 /*
  * find multiples
  */
-void getMultiples(int_vec_t factor, const bool_vec_t prime, int a) {
-    for (int p = 0; p < a+1; ++p) {
+void getMultiples(int_vec_t *factor, const bool_vec_t prime, int a) {
+    for (int p = 2; p < a+1; ++p) {
         if (prime[p]) {
             while (a%p == 0) {
                 a /= p;
-                factor[p]++;
+                (*factor)[p]++;
             }
         }
     }
@@ -82,15 +82,15 @@ void getMultiples(int_vec_t factor, const bool_vec_t prime, int a) {
  */
 void lcm(int a, int b) {
     bool_vec_t prime(a+1, true);
-    getPrime(prime, a);
+    getPrime(&prime, a);
 
     int_vec_t a_factor(a+1, 0);
     int_vec_t b_factor(b+1, 0);
 
-    getMultiples(a_factor, prime, a);
-    getMultiples(b_factor, prime, b);
+    getMultiples(&a_factor, prime, a);
+    getMultiples(&b_factor, prime, b);
 
-    int factor_size = a_factor.size();
+    int factor_size = b_factor.size();
     int biggest_factor[factor_size];
     for (int i = 0; i < factor_size; ++i) {
         if (a_factor[i] <= b_factor[i]) {
