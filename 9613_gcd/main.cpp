@@ -14,13 +14,14 @@ int main() {
             std::cin >> intNum[j];
         }
 
-        result[i] = intNum[0];
+        result[i] = 0;
         for (int j = 1; j < intCount; ++j) {
-            if (result[i] < intNum[j]) {
-                result[i] = intNum[j];
-                intNum[j] = intNum[j-1];
+            if (intNum[j-1] < intNum[j]) {
+                int tmp = intNum[j-1];
+                intNum[j-1] = intNum[j];
+                intNum[j] = tmp;
             }
-            result[i] = gcd(result[i], intNum[j]);
+            result[i] += gcd(intNum[j-1], intNum[j]);
         }
     }
 
