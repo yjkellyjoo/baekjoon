@@ -7,7 +7,7 @@ int main() {
     // 변수 선언
     int testCase;
     std::cin >> testCase;
-    int result[testCase];
+    unsigned long long int result[testCase];
 
     // 입력 받기
     for (int i = 0; i < testCase; ++i) {
