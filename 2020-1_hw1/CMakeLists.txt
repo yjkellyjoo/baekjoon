@@ -1,6 +1,4 @@
 cmake_minimum_required(VERSION 3.16)
-project(2020_1_hw1)
+project(2020-1_hw1)
 
-set(CMAKE_CXX_STANDARD 14)
-
-add_executable(2020_1_hw1 main.cpp)
+add_executable(2020-1_hw1 sum_2020020762.c area_2020020762.c)
