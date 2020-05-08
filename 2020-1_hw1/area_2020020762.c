@@ -30,6 +30,7 @@ int area_divide_and_conquer(int left, int right){
     }
     else {
         int mid = (right + left) / 2;
+        // 중간 막대를 기준으로 왼쪽, 오른쪽 분할
         int answer = max(area_divide_and_conquer(left, mid), area_divide_and_conquer(mid + 1, right));
 
         // 중간 값 계산
