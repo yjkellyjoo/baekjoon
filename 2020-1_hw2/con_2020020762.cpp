@@ -16,13 +16,12 @@ int main() {
     int arr_size, best_start, best_end;
     signed int *arr, *sum, best;
 
-
-    scanf("%d", &arr_size);         // receive array size
+    std::cin >> arr_size;           // receive array size
     arr = new signed int[arr_size];         // allocate array with according array size
     sum = new signed int[arr_size];         // allocate sum with the same size
 
     for (int i = 0; i < arr_size; i++) {    // fill in the array
-        scanf("%d", &arr[i]);
+        std::cin >> arr[i];
     }
     fflush(stdin);
 
@@ -59,7 +58,7 @@ int main() {
 
     // answer!
     for (int j = best_start; j <= best_end; ++j) {
-        printf("%d ", arr[j]);
+        std::cout << arr[j] << " ";
     }
 
     return 0;

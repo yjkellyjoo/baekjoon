@@ -3,4 +3,4 @@ project(2020_1_hw2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(2020_1_hw2 main.cpp)
+add_executable(2020_1_hw2 con_2020020762.cpp)
